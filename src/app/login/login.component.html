@@ -1,0 +1,64 @@
+
+<div fxLayoutAlign="center center" fxFlexFill class='bg-img'>
+  <mat-card fxFlex="25">
+    <mat-toolbar color="primary">Login Page</mat-toolbar>
+    <br>
+    <form fxLayoutAlign="stretch" fxLayout="column" #loginForm ="ngForm" (ngSubmit)='loginForm.form.valid && submitLoginForm(loginForm.form)' autocomplete="off">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email Id</mat-label>
+          <input matInput [(ngModel)]="email" type="email" name="email" #emailId ="ngModel" placeholder="name123@email.com" required emailValidator>
+          <mat-error *ngIf="emailId.errors?.required">Email is required</mat-error>
+          <mat-error *ngIf="emailId.errors?.emailName">enter proper email</mat-error>
+        </mat-form-field>
+
+ <br>
+
+ <mat-form-field appearance="fill">
+  <mat-label>password</mat-label>
+  <input matInput [(ngModel)]="password" type="password" name="password" #passwordVar ="ngModel" minlength=6 maxlength=10 required >
+  <mat-error *ngIf="passwordVar.errors?.required">Please enter the password</mat-error>
+  <mat-error *ngIf="passwordVar.errors?.minlength">Enter min char of 6</mat-error>
+  <mat-error *ngIf="passwordVar.errors?.maxlength">Max charlenth exceeded</mat-error>
+</mat-form-field>
+
+      <br>
+      <button mat-raised-button type="submit" color="primary" [disabled]="!loginForm.form.valid" >Login</button>
+
+  </form>
+
+  </mat-card>
+</div>
+
+
+<!--<div class="bg-img">
+<div fxLayoutAlign="center center" fxFlexFill class="login-form-class">
+  <mat-card fxFlex="25">
+    <mat-toolbar color="primary">Login Page</mat-toolbar>
+    <br>
+    <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onLoginSubmit()" novalidate>
+     <div class="form-container">
+       <mat-form-field appearance="fill">
+         <label>Email</label>
+        <input id="email"
+        matInput
+        formControlName="email"
+        [(ngModel)]="email"
+        placeholder="Enter your email" />
+       </mat-form-field>
+       <mat-form-field appearance="fill">
+        <input id="password"
+                     matInput
+                     formControlName="password"
+                     [(ngModel)]="password"
+                     placeholder="Enter your password"
+                     [type]="hide ? 'password':'text'" />
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit" color="primary" [disabled]="!loginForm.valid" >Login</button>
+     </div>
+    </form>
+  </mat-card>
+  </div>
+
+</div>-->
